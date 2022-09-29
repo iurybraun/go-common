@@ -23,6 +23,35 @@ func MonthIntToString(month int32) string {
     }
 }
 
+func LastMonthFirstAndLastDays() (time.Time, time.Time) {
+    /* ******************** */
+    now := time.Now()
+    currentYear, currentMonth, _ := now.Date()
+    //currentLocation := now.Location()
+    currentTimestamp := time.Now().UTC()
+    currentLocation := currentTimestamp.Location()
+    
+    var firstOfDate, lastOfDate time.Time
+    start_date := time.Date(currentYear, currentMonth, 1, 0, 0, 0, 0, currentLocation)
+    start_date = start_date.AddDate(0, -1, 0)
+    end_date := start_date.AddDate(0, 1, -1)
+    
+    //currentYear, currentMonth, _ := currentTimestamp.Date()
+    firstDateOfYear, firstDateOfMonth, firtDateOfDay := start_date.Date()
+    lastDateOfYear, lastDateOfMonth, lastDateOfDay := end_date.Date()
+    
+    firstOfDate = time.Date(firstDateOfYear, firstDateOfMonth, firtDateOfDay, 0, 0, 0, 0, currentLocation)
+    lastOfDate = time.Date(lastDateOfYear, lastDateOfMonth, lastDateOfDay, 23, 59, 59, 999999999, currentLocation)
+    
+    /*pipeline := []bson.M{}
+    pipeline = append(pipeline, bson.M{
+            "$match": bson.M{"network.master": args_username, "date": bson.M{"$gte": firstOfDate, "$lt": lastOfDate}},
+        })*/
+    /* ******************** */
+    
+    return firstOfDate, lastOfDate
+}
+
 func CurrentMonthFirstAndLastDays() (time.Time, time.Time) {
     /* ******************** */
     now := time.Now()
