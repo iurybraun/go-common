@@ -17,11 +17,20 @@ func PercentageChange(old, new int32) (delta float64) {
     return
 }
 
+/* !ERROR
 func DiscountPerc(value int32, percent float64) (delta int32) {
     intVal := float64(value)
     discountValue := int32(intVal/100 * percent)
     
     delta = value - discountValue
+	return
+}*/
+
+func DiscountPerc(value int32, percent float64) (delta int32) {
+	intVal := float64(value)
+	discountValue := intVal / 100.0 * percent
+
+	delta = int32(intVal - discountValue)
 	return
 }
 
