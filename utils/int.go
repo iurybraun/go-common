@@ -34,6 +34,14 @@ func DiscountPerc(value int32, percent float64) (delta int32) {
 	return
 }
 
+func DiscountPerc64(value int64, percent float64) (delta int64) {
+    intVal := float64(value)
+    discountValue := intVal / 100.0 * percent
+
+    delta = int64(intVal - discountValue)
+    return
+}
+
 /*func CalcValueFromPerc(value int, percent float64) (delta int32) {
     delta = int32((float64(value / 100)) * percent)
     return
