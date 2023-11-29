@@ -10,6 +10,10 @@ func IntToStr(n int32) string {
     return strconv.FormatInt(int64(n), 10)
 }
 
+func Int64ToStr(n int64) string {
+    return strconv.FormatInt(n, 10)
+}
+
 // USE: PercentageChange(100, 130)
 func PercentageChange(old, new int32) (delta float64) {
     diff := float64(new - old)
