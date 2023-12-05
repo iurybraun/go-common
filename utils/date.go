@@ -80,6 +80,21 @@ func CurrentMonthFirstAndLastDays() (time.Time, time.Time) {
     return firstOfDate, lastOfDate
 }
 
+func CurrentMonthFirstAndLastTimeOfDay() (time.Time, time.Time) {
+    now := time.Now()
+    currentYear, currentMonth, _ := now.Date()
+    currentTimestamp := time.Now().UTC()
+    currentLocation := currentTimestamp.Location()
+    
+	var stat_date, end_date time.Time
+	curr_date := time.Date(currentYear, currentMonth, 1, 0, 0, 0, 0, currentLocation)
+	dateYear, dateMonth, dateDay := curr_date.Date()
+	
+	stat_date = time.Date(dateYear, dateMonth, dateDay, 0, 0, 0, 0, time.Local)
+	end_date = time.Date(dateYear, dateMonth, dateDay, 23, 59, 59, 999999999, time.Local)
+    
+    return stat_date, end_date
+}
 
 /**
 type Month uint32
