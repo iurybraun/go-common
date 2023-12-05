@@ -82,12 +82,12 @@ func CurrentMonthFirstAndLastDays() (time.Time, time.Time) {
 
 func CurrentMonthFirstAndLastTimeOfDay() (time.Time, time.Time) {
     now := time.Now()
-    currentYear, currentMonth, _ := now.Date()
+    currentYear, currentMonth, currentDay := now.Date()
     currentTimestamp := time.Now().UTC()
     currentLocation := currentTimestamp.Location()
     
 	var stat_date, end_date time.Time
-	curr_date := time.Date(currentYear, currentMonth, 1, 0, 0, 0, 0, currentLocation)
+	curr_date := time.Date(currentYear, currentMonth, currentDay, 0, 0, 0, 0, currentLocation)
 	dateYear, dateMonth, dateDay := curr_date.Date()
 	
 	stat_date = time.Date(dateYear, dateMonth, dateDay, 0, 0, 0, 0, time.Local)
