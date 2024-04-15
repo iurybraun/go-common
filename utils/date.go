@@ -96,7 +96,7 @@ func CurrentMonthFirstAndLastTimeOfDay() (time.Time, time.Time) {
     return stat_date, end_date
 }
 
-func StarAndEndDateFromDate(start_date, end_date time.Time) (time.Time, time.Time) {
+func StartAndEndDateFromDate(start_date, end_date time.Time) (time.Time, time.Time) {
 	start_dateYear, start_dateMonth, start_dateDay := start_date.Date()
 	end_dateYear, end_dateMonth, end_dateDay := end_date.Date()
 	currentTimestamp := time.Now().UTC()
