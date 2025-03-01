@@ -112,6 +112,18 @@ func StartAndEndDateFromDate(start_date, end_date time.Time) (time.Time, time.Ti
 	return stat_date_r, end_date_r
 }
 
+
+func GetMonthStartAndEndFromYearAndMonth(year, month int) (time.Time, time.Time, error) {
+	if month < 1 || month > 12 {
+		return time.Time{}, time.Time{}, fmt.Errorf("mês inválido: %d. O mês deve estar entre 1 e 12", month)
+	}
+
+	startDate := time.Date(year, time.Month(month), 1, 0, 0, 0, 0, time.UTC)
+	endDate := startDate.AddDate(0, 1, 0).Add(-time.Nanosecond)
+
+	return startDate, endDate, nil
+}
+
 /**
 type Month uint32
 
