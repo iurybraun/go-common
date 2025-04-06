@@ -125,10 +125,10 @@ func GetMonthStartAndEndFromYearAndMonth(year, month int) (time.Time, time.Time,
 	return startDate, endDate, nil
 }
 
-func ExtractComponentsDate(date time.Time) (day, month, year int) {
-	day = date.Day()
-	month = int(date.Month()) // Month() retorna um tipo time.Month, convertemos para int
+func ExtractComponentsDate(date time.Time) (year, month, day int) {
 	year = date.Year()
+	month = int(date.Month()) // Month() retorna um tipo time.Month, convertemos para int
+	day = date.Day()
 	return
 }
 
