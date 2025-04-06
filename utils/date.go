@@ -125,6 +125,13 @@ func GetMonthStartAndEndFromYearAndMonth(year, month int) (time.Time, time.Time,
 	return startDate, endDate, nil
 }
 
+func ExtractComponentsDate(date time.Time) (day, month, year int) {
+	day = date.Day()
+	month = int(date.Month()) // Month() retorna um tipo time.Month, convertemos para int
+	year = date.Year()
+	return
+}
+
 /**
 type Month uint32
 
